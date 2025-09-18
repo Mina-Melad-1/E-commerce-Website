@@ -86,7 +86,7 @@
                     <th>Delete</th>
                 </tr>
 
-                @foreach ($data as $data)
+                @foreach ($data as $data) <!-- 2rd $data this is the attribute passed from controller holding access to table -->
                     
 
 

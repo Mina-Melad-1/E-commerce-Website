@@ -4,8 +4,8 @@
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
         <div class="title">
-            <h1 class="h5">Mina Melad</h1>
-            <p>Backend Developer</p>
+            <h1 class="h5">Team SE</h1>
+            <p>Backend Developers</p>
         </div>
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
@@ -31,6 +31,14 @@
                     </a>
                 </li>
 
-                
+                <li class="nav-item">
+            <a href="{{ url('view_users') }}" class="nav-link">
+                <i class="fa fa-users"></i>Manage Users
+            </a>
+
+            <li><a href="{{url('view_reviews')}}"><i class="fa fa-star"></i>Manage Reviews</a></li>
+</li>
+
+
         </ul>
     </nav>

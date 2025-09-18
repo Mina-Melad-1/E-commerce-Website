@@ -5,7 +5,7 @@
         @include('home.css')
     </head>
 
-    <body>
+    <body class="{{ Cookie::get('theme', 'light') === 'dark' ? 'dark-mode' : '' }}">
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
@@ -26,7 +26,6 @@
 
 
 @include('home.footer')
-
+<script src="{{ asset('js/theme-switcher.js') }}"></script>
     </body>
-
     </html>

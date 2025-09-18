@@ -74,7 +74,7 @@
                     <tr>
                         <td>{{$products->title}}</td>
                         <td>{!!Str::limit($products->description,10)!!}</td>
-                        <td>{{$products->category}}</td>
+                        <td>{{$products->category->category_name}}</td>
                         <td>$ {{$products->price}}</td>
                         <td>{{$products->quantity}}</td>
                         <td>

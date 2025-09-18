@@ -10,14 +10,43 @@ class Product extends Model
 {
     use HasFactory;
     use Sluggable;
-    public function Sluggable(): array
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'price',
+        'category_id', 
+        'quantity',
+        'slug'
+    ];
+
+    public function sluggable(): array
     {
-        return
-            [
-                'slug' =>
-                [
-                    'source' => 'title'
-                ]
-            ];
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
 }

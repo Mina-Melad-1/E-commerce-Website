@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Review;
 use Stripe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -19,13 +20,13 @@ class HomeController extends Controller
         $product = Product::all()->count();
         $order = Order::all()->count();
         $delivered = Order::where('status', 'Delivered')->count();
-        return view('admin.index', compact('user', 'product', 'order', 'delivered'));
+        $reviews = Review::all()->count();
+        return view('admin.index', compact('user', 'product', 'order', 'delivered', 'reviews'));
     }
 
     public function home()
     {
-        $product = Product::all();
-
+        $product = Product::with('reviews')->get();
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -38,17 +39,16 @@ class HomeController extends Controller
 
     public function login_home()
     {
-        $product = Product::all();
+        $product = Product::with('reviews')->get();
         $user = Auth::user();
         $userid = $user->id;
         $count = Cart::where('user_id', $userid)->count();
         return view('home.index', compact('product', 'count'));
     }
 
-
     public function product_details($id)
     {
-        $data = Product::find($id);
+        $data = Product::with('reviews.user')->findOrFail($id);
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -62,11 +62,8 @@ class HomeController extends Controller
     public function add_cart($id)
     {
         $product_id = $id;
-
         $user = Auth::user();
-
         $user_id = $user->id;
-
         $data = new Cart;
         $data->user_id = $user_id;
         $data->product_id = $product_id;
@@ -99,7 +96,6 @@ class HomeController extends Controller
         $name = $request->name;
         $address = $request->address;
         $phone = $request->phone;
-
         $userid = Auth::user()->id;
         $cart = Cart::where('user_id', $userid)->get();
         foreach ($cart as $carts) {
@@ -119,6 +115,7 @@ class HomeController extends Controller
         toastr()->timeOut(5000)->closeButton()->addSuccess('Product Ordered Successfully');
         return redirect()->back();
     }
+
     public function myorders()
     {
         $user = Auth::user()->id;
@@ -137,18 +134,13 @@ class HomeController extends Controller
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
             "amount" => 100 * 100,
-
             "currency" => "usd",
-
             "source" => $request->stripeToken,
-
             "description" => "Test payment from Complete"
         ]);
-
         $name = Auth::user()->name;
         $phone = Auth::user()->phone;
         $address = Auth::user()->address;
-
         $userid = Auth::user()->id;
         $cart = Cart::where('user_id', $userid)->get();
         foreach ($cart as $carts) {
@@ -172,8 +164,7 @@ class HomeController extends Controller
 
     public function shop()
     {
-        $product = Product::all();
-
+        $product = Product::with('reviews')->get();
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -186,7 +177,6 @@ class HomeController extends Controller
 
     public function why()
     {
-
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -199,7 +189,6 @@ class HomeController extends Controller
 
     public function contact()
     {
-
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -219,11 +208,13 @@ class HomeController extends Controller
         } else {
             $count = '';
         }
-
         $sr = $request->sear;
-
-        $product = Product::where('title', 'LIKE', '%' . $sr . '%')->orWhere('category', 'LIKE', '%' . $sr . '%')->paginate(3);
-
+        $product = Product::where('title', 'LIKE', '%' . $sr . '%')
+            ->orWhereHas('category', function($query) use ($sr) {
+                $query->where('category_name', 'LIKE', '%' . $sr . '%');
+            })
+            ->with('reviews')
+            ->paginate(3);
         return view('home.index', compact('product', 'count'));
     }
 }

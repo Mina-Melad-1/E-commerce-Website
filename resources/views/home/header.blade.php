@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <header class="header_section">
     <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="/">
         <span>
-            Giftos
+            Bazzary
         </span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +24,14 @@
                 <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('contact') }}">Contact Us</a>
                 </li>
+
+            <li class="nav-item">
+            <a href="{{ route('toggle.theme') }}" class="nav-link theme-toggle">
+                <i class="bi bi-moon-fill dark-icon"></i>
+                <i class="bi bi-sun-fill light-icon" style="display: none;"></i>
+                <span class="theme-text">Dark Mode</span>
+            </a>
+            </li>
             </ul>
         
         <div class="user_option">

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->string('price')->nullable();
-            $table->string('category')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->string('quantity')->nullable();
             $table->timestamps();
         });

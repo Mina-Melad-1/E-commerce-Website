@@ -104,12 +104,12 @@
                 @csrf
 
                 <div class="form-group required">
-                    <label class='control-label'>Name on Card</label>
+                    <label class='control-label'>Name on Card </label>
                     <input class='form-control' size='4' type='text' name="name" required>
                 </div>
 
                 <div class="form-group required">
-                    <label class='control-label'>Card Number</label>
+                    <label class='control-label'>Card Number (use this : 4242 4242 4242 4242)</label>
                     <input autocomplete='off' class='form-control card-number' size='20' type='text' name="card_number" required>
                 </div>
 

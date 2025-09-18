@@ -56,6 +56,19 @@
         </div>
         </div>
     </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="statistic-block block">
+        <div class="progress-details d-flex align-items-end justify-content-between">
+            <div class="title">
+            <div class="icon"><i class="bi bi-star-fill"></i></div><strong>Total Reviews</strong>
+            </div>
+            <div class="number dashtext-5">{{$reviews}}</div>
+        </div>
+        <div class="progress progress-template">
+            <div role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-5"></div>
+        </div>
+        </div>
+    </div>
     </div>
 </div>
 </section>
@@ -63,7 +76,7 @@
 <div class="footer__block block no-margin-bottom">
     <div class="container-fluid text-center">
     <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-    <p class="no-margin-bottom">2018 &copy; Your company. Download From <a target="_blank" href="https://templateshub.net">Templates Hub</a>.</p>
+    <p class="no-margin-bottom">2018 © Your company. Download From <a target="_blank" href="https://templateshub.net">Templates Hub</a>.</p>
     </div>
 </div>
 </footer>

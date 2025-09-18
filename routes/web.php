@@ -4,7 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ThemeController;
 route::get('/', [HomeController::class, 'home']);
 
 route::get('/dashboard', [HomeController::class, 'login_home'])
@@ -19,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__ . '/auth.php'; // to include (auth.php)
 
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
 Route::get('view_category', [AdminController::class, 'view_category'])->middleware(['auth', 'admin']);
@@ -54,3 +55,18 @@ Route::get('shop', [HomeController::class, 'shop']);
 Route::get('why', [HomeController::class, 'why']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::get('search', [HomeController::class, 'search']);
+
+
+Route::get('/view_users', [AdminController::class, 'view_users'])->name('admin.users')->middleware(['auth', 'admin']);
+Route::get('/edit_user/{id}', [AdminController::class, 'edit_user'])->middleware(['auth', 'admin']);
+Route::post('/update_user/{id}', [AdminController::class, 'update_user'])->middleware(['auth', 'admin']);
+Route::get('/delete_user/{id}', [AdminController::class, 'delete_user'])->middleware(['auth', 'admin']);
+Route::get('/user_search', [AdminController::class, 'user_search'])->middleware(['auth', 'admin']);
+Route::get('/create_user', [AdminController::class, 'create_user'])->middleware(['auth', 'admin']);
+Route::post('/store_user', [AdminController::class, 'store_user'])->middleware(['auth', 'admin']);
+
+Route::post('/product/{id}/review', [ReviewController::class, 'store'])->name('review.store')->middleware(['auth', 'verified']);
+Route::get('/view_reviews', [AdminController::class, 'view_reviews'])->name('admin.reviews')->middleware(['auth', 'admin']);
+Route::get('/delete_review/{id}', [AdminController::class, 'delete_review'])->name('delete_review')->middleware(['auth', 'admin']);
+
+Route::get('/toggle-theme', [ThemeController::class, 'toggleTheme'])->name('toggle.theme');

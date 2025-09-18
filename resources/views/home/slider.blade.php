@@ -9,7 +9,7 @@
                     <div class="detail-box"> 
                     <h1>
                         Welcome To Our <br>
-                        Gift Shop
+                        Bazzary Shop
                     </h1>
             <p style="white-space: pre-wrap; margin-right:20px">
                 Step into a world of delightful surprises, where every item 

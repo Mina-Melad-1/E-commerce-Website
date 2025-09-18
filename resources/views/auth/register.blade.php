@@ -62,6 +62,7 @@
             </div>
 
             <!-- Phone -->
+             <!-- ex for all ==> name = "phone" this refrence to the name in controller in auth => register    -->
             <div class="mb-4">
                 <x-input-label for="phone" :value="__('Phone')" class="form-label" />
                 <x-text-input id="phone" class="form-control form-control-lg" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" placeholder="Enter your phone number" />

@@ -9,6 +9,8 @@
             border-radius: 0.5rem; 
             background-color: #343a40;
             color: #f8f9fa; 
+            width: 100%;
+            table-layout: auto;
         }
         .custom-table th,
         .custom-table td {
@@ -24,6 +26,8 @@
         .custom-table td img {
             border: 1px solid #6c757d; 
             border-radius: 0.25rem; 
+            max-width: 100px;
+            height: auto;
         }
         .custom-table tbody tr:hover {
             background-color: #495057; 
@@ -38,52 +42,54 @@
     <!-- Sidebar Navigation end-->
     <div class="page-content">
         <div class="page-header">
-        <div class="container-fluid">
+            <div class="container-fluid">
 
-
-
-                <table class="table table-bordered table-dark table-hover custom-table">
-                    <tr>
-                        <th>Customer name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Product title</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Payment Status</th>
-                        <th>Status</th>
-                        <th>Change Status</th>
-                    </tr>
-                    @foreach ($data as $data)
-                    <tr>
-                        <td>{{$data->name}}</td>    
-                        <td>{{$data->rec_address}}</td>
-                        <td>{{$data->phone}}</td>
-                        <td>{{$data->product->title}}</td>
-                        <td>{{$data->product->price}}</td>
-                        <td>
-                            <img width="120" src="/products/{{$data->product->image}}">
-                        </td>
-                        <td>{{$data->payment_status}}</td>
-                        <td>
-                            @if ($data->status == 'in progress')
-                                <span style="color: red">{{$data->status}}</span>
-                            @elseif ($data->status == 'On the way')
-                                <span style="color: yellow">{{$data->status}}</span>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-dark table-hover custom-table">
+                        <tr>
+                            <th>Customer name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Product title</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Payment Status</th>
+                            <th>Status</th>
+                            <th>Change Status</th>
+                        </tr>
+                        @foreach ($data as $data)
+                        <tr>
+                            <td>{{$data->name}}</td>    
+                            <td>{{$data->rec_address}}</td>
+                            <td>{{$data->phone}}</td>
+                            <td>{{$data->product->title}}</td>
+                            <td>{{$data->product->price}}</td>
+                            <td>
+                                <img src="/products/{{$data->product->image}}" alt="Product Image">
+                            </td>
+                            <td>{{$data->payment_status}}</td>
+                            <td>
+                                @if ($data->status == 'in progress')
+                                    <span style="color: red">{{$data->status}}</span>
+                                @elseif ($data->status == 'On the way')
+                                    <span style="color: yellow">{{$data->status}}</span>
                                 @else
-                                <span style="color: rgb(31, 196, 31)">{{$data->status}}</span>
-                            @endif
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" href="{{url('on_the_way',$data->id)}}">On the way</a>
-                            <a style="margin-top: 20px" class="btn btn-success" href="{{url('delivered',$data->id)}}">Delivered</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
+                                    <span style="color: rgb(31, 196, 31)">{{$data->status}}</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{url('on_the_way',$data->id)}}">On the way</a>
+                                <a style="margin-top: 20px" class="btn btn-success" href="{{url('delivered',$data->id)}}">Delivered</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+
+            </div>
         </div>
     </div>
-    </div>
+
     <!-- JavaScript files-->
     @include('admin.js')
 </body>

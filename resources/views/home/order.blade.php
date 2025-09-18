@@ -41,6 +41,17 @@
             background-color: #e9ecef; /* Light gray for row hover effect */
             color: #212529; /* Ensure text remains readable */
         }
+
+
+        .dark-mode .custom-table {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+}
+.dark-mode .custom-table th,
+.dark-mode .custom-table td {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+}
     </style>
 </head>
 <body>

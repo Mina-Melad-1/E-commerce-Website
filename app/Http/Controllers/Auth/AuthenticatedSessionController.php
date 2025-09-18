@@ -28,8 +28,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        // Validate on Admin for dashboard
         $name = $request->user()->name;
-        if ($request->user()->usertype === 'admin') {
+        if ($request->user()->usertype === 'admin') // request from table user in database 
+        {
             toastr()->timeOut(5000)->closeButton()->addSuccess('Welcome ' . $name);
             return redirect('admin/dashboard');
         }

@@ -102,47 +102,40 @@
             <h1>Add Product</h1>
         </div>
         <div class="div_deg">
-            <form action="{{url('upload_product')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="input_deg">
-                    <label>Product Title</label>
-                    <input type="text" name="title" required>
-                </div>
-
-                <div class="input_deg">
-                    <label>Description</label>
-                    <textarea name="description" required></textarea>
-                </div>
-
-                <div class="input_deg">
-                    <label>Price</label>
-                    <input type="text" name="price">
-                </div>
-
-                <div class="input_deg">
-                    <label>Quantity</label>
-                    <input type="number" name="qty">
-                </div>
-
-                <div class="input_deg">
-                    <label>Category</label>
-                    <select name="category" required>
-                        <option>Select an Option</option>
-                        @foreach ($category as $category)
-                            <option value="{{$category->category_name}}">{{$category->category_name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="input_deg">
-                    <label>Product Image</label>
-                    <input type="file" name="image">
-                </div>
-
-                <div class="input_deg">
-                    <input class="btn" type="submit" value="Add Product">
-                </div>
-            </form>
+                <form action="{{url('upload_product')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="input_deg">
+                <label>Product Title</label>
+                <input type="text" name="title" required>
+            </div>
+            <div class="input_deg">
+                <label>Description</label>
+                <textarea name="description" required></textarea>
+            </div>
+            <div class="input_deg">
+                <label>Price</label>
+                <input type="number" name="price" required>
+            </div>
+            <div class="input_deg">
+                <label>Quantity</label>
+                <input type="number" name="qty" required>
+            </div>
+            <div class="input_deg">
+                <label>Category</label>
+                <select name="category" required>
+                    @foreach ($category as $category)
+                        <option value="{{$category->id}}">{{$category->category_name}}</option required>
+                    @endforeach
+                </select>
+            </div>
+            <div class="input_deg">
+                <label>Product Image</label>
+                <input type="file" name="image" required>
+            </div>
+            <div class="input_deg">
+                <input class="btn" type="submit" value="Add Product">
+            </div>
+        </form>
         </div>
     </div>
 

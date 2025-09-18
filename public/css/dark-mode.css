@@ -1,0 +1,92 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .footer_section,
+body.dark-mode .box {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .box {
+    border: 1px solid #333;
+}
+
+body.dark-mode .detail-box h5,
+body.dark-mode .detail-box h6,
+body.dark-mode .heading_container h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-success {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+body.dark-mode .btn-info {
+    background-color: #0288d1;
+    border-color: #0288d1;
+}
+
+body.dark-mode input[type="search"],
+body.dark-mode textarea.form-control,
+body.dark-mode .form-control {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark-mode .card-header {
+    background-color: #252525;
+    border-color: #333;
+}
+
+body.dark-mode .text-muted {
+    color: #aaa !important;
+}
+
+body.dark-mode .alert-info {
+    background-color: #01579b;
+    color: #e0e0e0;
+    border-color: #0277bd;
+}
+
+body.dark-mode .border-bottom {
+    border-color: #333 !important;
+}
+
+body.dark-mode .bg-light {
+    background-color: #252525 !important;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle i {
+    margin-right: 5px;
+}
+
+body.dark-mode .theme-toggle {
+    background-color: #333;
+    color: #fff;
+}
+
+body:not(.dark-mode) .theme-toggle {
+    background-color: #f8f9fa;
+    color: #333;
+}

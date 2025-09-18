@@ -65,6 +65,16 @@
         }
 
         
+
+        .dark-mode .custom-table {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+}
+.dark-mode .custom-table th,
+.dark-mode .custom-table td {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+}
     </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
