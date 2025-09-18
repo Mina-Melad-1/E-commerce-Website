@@ -137,17 +137,16 @@
             </ul>
         </section>
         <!-- Screenshots -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">📸 Screenshots</h2>
-            <p class="text-gray-600 mb-4">*(Upload images to `assets/screenshots/` and update paths below)*</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                ![Image Alt](https://github.com/Mina-Melad-1/E-commerce-Website/blob/a5c91de8d25d67e93c2949eb73640fd34493b637/home.jpg.png)
-                ![Image Alt](https://github.com/Mina-Melad-1/E-commerce-Website/blob/a5c91de8d25d67e93c2949eb73640fd34493b637/cart.jpg.png)
-                ![Image Alt](https://github.com/Mina-Melad-1/E-commerce-Website/blob/a5c91de8d25d67e93c2949eb73640fd34493b637/Admin_Dashboard.jpg.png)
-                </div>
-            </div>
-        </section>
+<section class="mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">📸 Screenshots</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+            <img src="https://raw.githubusercontent.com/Mina-Melad-1/E-commerce-Website/a5c91de8d25d67e93c2949eb73640fd34493b637/home.jpg.png" alt="Home Page" class="w-full h-auto rounded-lg shadow-md">
+            <img src="https://raw.githubusercontent.com/Mina-Melad-1/E-commerce-Website/a5c91de8d25d67e93c2949eb73640fd34493b637/cart.jpg.png" alt="Cart Page" class="w-full h-auto rounded-lg shadow-md">
+            <img src="https://raw.githubusercontent.com/Mina-Melad-1/E-commerce-Website/a5c91de8d25d67e93c2949eb73640fd34493b637/Admin_Dashboard.jpg.png" alt="Admin Dashboard" class="w-full h-auto rounded-lg shadow-md">
+        </div>
+    </div>
+</section>
         <!-- Contributing -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold text-gray-800 mb-4">🤝 Contributing</h2>
